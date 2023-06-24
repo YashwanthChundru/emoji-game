@@ -1,0 +1,9 @@
+.list-items {
+  list-style-type: none;
+}
+.button-styling {
+  border-radius: 10px;
+  border: 1px solid #ffffff30;
+  padding: 8px;
+  background-color: transparent;
+}
