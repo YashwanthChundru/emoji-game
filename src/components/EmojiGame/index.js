@@ -18,15 +18,30 @@ import './index.css'
 class EmojiGame extends Component {
   state = {score: 0, topScore: 0}
 
+  shuffledEmojisList = () => {
+    const {emojisList} = this.props
+    return emojisList.sort(() => Math.random() - 0.5)
+  }
+
+  clickedAnEmoji = id => {
+    this.setState(prevState => ({
+      score: parseInt(prevState.score) + 1,
+    }))
+  }
+
   render() {
     const {score, topScore} = this.state
     const {emojisList} = this.props
     return (
-      <div>
+      <div className="main-container">
         <NavBar score={score} topScore={topScore} />
-        <ul>
+        <ul className="list-items">
           {emojisList.map(eachEmoji => (
-            <EmojiCard key={eachEmoji.id} emoji={eachEmoji} />
+            <EmojiCard
+              key={eachEmoji.id}
+              emoji={eachEmoji}
+              onClickEmoji={this.clickedAnEmoji}
+            />
           ))}
         </ul>
       </div>
