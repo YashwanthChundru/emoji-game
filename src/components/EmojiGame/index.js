@@ -23,12 +23,6 @@ class EmojiGame extends Component {
     return emojisList.sort(() => Math.random() - 0.5)
   }
 
-  clickedAnEmoji = id => {
-    this.setState(prevState => ({
-      score: parseInt(prevState.score) + 1,
-    }))
-  }
-
   render() {
     const {score, topScore} = this.state
     const {emojisList} = this.props
@@ -37,11 +31,7 @@ class EmojiGame extends Component {
         <NavBar score={score} topScore={topScore} />
         <ul className="list-items">
           {emojisList.map(eachEmoji => (
-            <EmojiCard
-              key={eachEmoji.id}
-              emoji={eachEmoji}
-              onClickEmoji={this.clickedAnEmoji}
-            />
+            <EmojiCard key={eachEmoji.id} emoji={eachEmoji} />
           ))}
         </ul>
       </div>
